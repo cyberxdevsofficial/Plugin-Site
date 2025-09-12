@@ -71,3 +71,8 @@ function renderDashboard(){
 
 /* ===== Views Counter ===== */
 (function(){localStorage.setItem("views",(parseInt(localStorage.getItem("views")||0)+1));})();
+
+/* ===== Mobile Menu Toggle ===== */
+function toggleMenu(){
+  document.getElementById("menuNav").classList.toggle("show");
+}
