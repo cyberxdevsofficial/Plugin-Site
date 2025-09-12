@@ -31,13 +31,13 @@
         <textarea id="pCode" rows="12" placeholder="Paste plugin code here (or use file upload)"></textarea>
         <input type="file" id="pFile" accept=".js,.py,.txt,.json,.sh" />
 
+        <!-- Password input only (no visible hints) -->
         <div style="margin-top:10px;">
-          <input type="password" id="adminPass" placeholder="Enter admin password to confirm" required>
+          <input type="password" id="adminPass" placeholder="Enter admin password" required>
         </div>
 
         <div style="margin-top:14px;">
           <button type="submit" class="btn">Add Plugin</button>
-          <span class="hint">Password to post: <strong>Anuga123</strong></span>
         </div>
       </form>
       <div id="adminMsg" class="small muted"></div>
@@ -52,7 +52,6 @@
   <script src="script.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Wire form
       const form = document.getElementById("pluginForm");
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -82,7 +81,7 @@
         }
 
         if (!title || !lang || !desc || !code) {
-          showAdminMsg("❌ Fill Title, Language, Description and paste code or upload file.", true);
+          showAdminMsg("❌ Fill Title, Language, Description and code/file.", true);
           return;
         }
 
@@ -103,4 +102,4 @@
     }
   </script>
 </body>
-</html>
+          </html>
