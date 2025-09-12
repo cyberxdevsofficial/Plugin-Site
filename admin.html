@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - Add Plugin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="matrixBackground"></canvas>
+
+  <header class="site-header">
+    <div class="brand">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAAmElEQVR42u3WwQ2AIBAE0HZKyP//OatCWyWwTxLd1xkM4cPjZQGgrOBjBM8DcGPpUFyoj3MJnK1nK9I5USqlUipVKoVSqVSqVSqVSKnR3gs4H2DYxwm1cwEZ5hQZMAKvgQgQ6eEHKtN4AAGaD7CVaEoNACj0Hn+YOQGsCqHsEEmfO1QCUHsEkmW0/gCgFVvN9GBY6S3AAAAAElFTkSuQmCC" alt="logo">
+      <h1>ADMIN - PLUGIN POST</h1>
+    </div>
+    <nav>
+      <a href="index.html">Marketplace</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="form-card">
+      <h2>Upload / Post Plugin</h2>
+      <form id="pluginForm">
+        <input type="text" id="pTitle" placeholder="Plugin Title" required>
+        <input type="text" id="pLang" placeholder="Language (e.g. javascript, python)" required>
+        <textarea id="pDesc" rows="3" placeholder="Short description" required></textarea>
+
+        <!-- Either paste code or upload small text file -->
+        <textarea id="pCode" rows="12" placeholder="Paste plugin code here (or use file upload)"></textarea>
+        <input type="file" id="pFile" accept=".js,.py,.txt,.json,.sh" />
+
+        <div style="margin-top:10px;">
+          <input type="password" id="adminPass" placeholder="Enter admin password to confirm" required>
+        </div>
+
+        <div style="margin-top:14px;">
+          <button type="submit" class="btn">Add Plugin</button>
+          <span class="hint">Password to post: <strong>Anuga123</strong></span>
+        </div>
+      </form>
+      <div id="adminMsg" class="small muted"></div>
+    </section>
+
+    <section class="form-card">
+      <h3>Existing Plugins</h3>
+      <div id="adminPluginsList" class="plugins-grid"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Wire form
+      const form = document.getElementById("pluginForm");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const title = document.getElementById("pTitle").value.trim();
+        const lang = document.getElementById("pLang").value.trim();
+        const desc = document.getElementById("pDesc").value.trim();
+        const codeText = document.getElementById("pCode").value;
+        const fileInput = document.getElementById("pFile");
+        const pass = document.getElementById("adminPass").value;
+
+        // verify password
+        if (pass !== "Anuga123") {
+          showAdminMsg("❌ Incorrect admin password.", true);
+          return;
+        }
+
+        // prefer pasted code, else read file
+        let code = codeText;
+        if (!code && fileInput.files.length > 0) {
+          const f = fileInput.files[0];
+          try {
+            code = await f.text();
+          } catch (err) {
+            showAdminMsg("❌ Could not read file.", true);
+            return;
+          }
+        }
+
+        if (!title || !lang || !desc || !code) {
+          showAdminMsg("❌ Fill Title, Language, Description and paste code or upload file.", true);
+          return;
+        }
+
+        addPlugin({ title, lang, desc, code });
+        showAdminMsg("✅ Plugin added successfully.");
+        form.reset();
+        renderAdminPlugins();
+      });
+
+      renderAdminPlugins();
+    });
+
+    function showAdminMsg(msg, isError = false) {
+      const el = document.getElementById("adminMsg");
+      el.textContent = msg;
+      el.style.color = isError ? "#ff4444" : "#9fff9f";
+      setTimeout(() => el.textContent = "", 4000);
+    }
+  </script>
+</body>
+</html>
