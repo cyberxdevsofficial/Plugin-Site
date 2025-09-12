@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plugins</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="matrixBackground"></canvas>
+
+  <header class="site-header">
+    <div class="brand"><h1>Plugins</h1></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>WhatsApp Bot Plugins</h2>
+    <form id="pluginForm">
+      <input type="text" id="pTitle" placeholder="Plugin Title" required>
+      <textarea id="pDesc" placeholder="Description" required></textarea>
+      <textarea id="pCode" placeholder="Plugin Code" required></textarea>
+      <input type="password" id="pPass" placeholder="Password required" required>
+      <button type="submit" class="btn">Add Plugin</button>
+    </form>
+    <div id="pluginsList" class="plugins-grid"></div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+      renderPluginsList();
+      document.getElementById("pluginForm").addEventListener("submit", e=>{
+        e.preventDefault();
+        const pass=document.getElementById("pPass").value;
+        if(pass!=="Anuga123"){alert("Wrong password");return;}
+        addPlugin({
+          title:document.getElementById("pTitle").value,
+          desc:document.getElementById("pDesc").value,
+          code:document.getElementById("pCode").value
+        });
+        e.target.reset();
+        renderPluginsList();
+      });
+    });
+  </script>
+</body>
+</html>
