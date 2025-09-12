@@ -2,8 +2,7 @@
 function loadAdmins(){
   let admins = JSON.parse(localStorage.getItem("admins")) || [];
   if(admins.length === 0){
-    // default admin
-    admins.push({user:"admin", pass:"Anuga123"});
+    admins.push({user:"admin", pass:"Anuga123"}); // default admin
     localStorage.setItem("admins", JSON.stringify(admins));
   }
   return admins;
@@ -14,6 +13,26 @@ function addAdmin(user, pass){
   admins.push({user, pass});
   localStorage.setItem("admins", JSON.stringify(admins));
   alert("New admin added!");
+}
+
+function checkAdminPassword(pass){
+  let admins = loadAdmins();
+  return admins.some(a => a.pass === pass);
+}
+
+/* ===== Admin Login ===== */
+function loginAdmin(e){
+  e.preventDefault();
+  const user = document.getElementById("adminUsername").value;
+  const pass = document.getElementById("adminPassword").value;
+  let admins = loadAdmins();
+  let found = admins.find(a => a.user === user && a.pass === pass);
+  if(found){
+    alert("Admin login successful!");
+    window.location.href = "admin-dashboard.html"; // redirect to dashboard
+  } else {
+    alert("Invalid admin credentials!");
+  }
 }
 
 /* ===== Comments & Replies ===== */
@@ -30,7 +49,6 @@ function replyToComment(index, replyText){
   localStorage.setItem("comments", JSON.stringify(comments));
 }
 
-/* Render comments for all users */
 function renderComments(){
   let comments = JSON.parse(localStorage.getItem("comments")) || [];
   const container = document.getElementById("comments");
@@ -49,7 +67,6 @@ function renderComments(){
   });
 }
 
-/* Render dashboard comments (with reply option) */
 function renderDashboard(){
   // stats
   document.getElementById("viewCount").innerText = localStorage.getItem("views") || 0;
@@ -86,8 +103,7 @@ function renderDashboard(){
   });
 }
 
-/* Check if given password matches any admin */
-function checkAdminPassword(pass){
-  let admins = loadAdmins();
-  return admins.some(a=>a.pass===pass);
+/* ===== Mobile Menu Toggle ===== */
+function toggleMenu(){
+  document.getElementById("menuNav").classList.toggle("show");
 }
