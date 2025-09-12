@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="matrixBackground"></canvas>
+
+  <header class="site-header">
+    <h1>Admin Dashboard</h1>
+    <nav><a href="index.html">Home</a></nav>
+  </header>
+
+  <main class="container">
+    <div class="form-card">
+      <h3>Stats</h3>
+      <p>Total Views: <span id="viewCount">0</span></p>
+      <p>Total Comments: <span id="commentCount">0</span></p>
+    </div>
+
+    <div class="form-card">
+      <h3>Reviews / Comments</h3>
+      <div id="adminComments"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    if(localStorage.getItem("adminAuth")!=="yes"){location.href="admin.html";}
+    renderDashboard();
+  </script>
+</body>
+</html>
