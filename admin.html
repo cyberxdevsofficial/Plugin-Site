@@ -2,28 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Login</title>
+  <title>Admin Login - ANUGA SENITHU</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="matrixBackground"></canvas>
-  <main class="container form-card">
-    <h2>Admin Login</h2>
-    <form id="adminLoginForm">
-      <input type="text" id="adminUser" placeholder="Username" required>
-      <input type="password" id="adminPass" placeholder="Password" required>
-      <button type="submit" class="btn">Login</button>
-    </form>
+  <header class="site-header">
+    <h1>Admin Login</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="menuNav">
+      <a href="index.html">Home</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="plugins.html">Plugins</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="form-container">
+      <h2>Admin Login</h2>
+      <form id="adminForm">
+        <input type="text" id="adminUsername" placeholder="Admin Username" required>
+        <input type="password" id="adminPassword" placeholder="Admin Password" required>
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
   </main>
+
+  <script src="script.js"></script>
   <script>
-    document.getElementById("adminLoginForm").addEventListener("submit",e=>{
-      e.preventDefault();
-      if(document.getElementById("adminUser").value==="admin" &&
-         document.getElementById("adminPass").value==="Anuga123"){
-        localStorage.setItem("adminAuth","yes");
-        location.href="dashboard.html";
-      }else{alert("Invalid credentials");}
-    });
+    document.getElementById("adminForm").addEventListener("submit", loginAdmin);
   </script>
 </body>
 </html>
