@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="matrixBackground"></canvas>
+
+  <header class="site-header">
+    <div class="brand"><h1>Marketplace</h1></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="plugins.html">Plugins</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Developer Products & Tools</h2>
+    <form id="marketForm">
+      <input type="text" id="mTitle" placeholder="Item Title" required>
+      <textarea id="mDesc" placeholder="Description" required></textarea>
+      <input type="password" id="mPass" placeholder="Password required" required>
+      <button type="submit" class="btn">Add Item</button>
+    </form>
+    <div id="marketList" class="plugins-grid"></div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+      renderMarketplace();
+      const form = document.getElementById("marketForm");
+      form.addEventListener("submit", e=>{
+        e.preventDefault();
+        const pass=document.getElementById("mPass").value;
+        if(pass!=="Anuga123"){alert("Wrong password");return;}
+        addMarketItem({
+          title:document.getElementById("mTitle").value,
+          desc:document.getElementById("mDesc").value
+        });
+        form.reset();
+        renderMarketplace();
+      });
+    });
+  </script>
+</body>
+</html>
