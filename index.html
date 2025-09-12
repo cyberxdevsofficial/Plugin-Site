@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ANUGA SENITHU WHATSAPP BOT PLUGINS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="matrixBackground"></canvas>
+
+  <header class="site-header">
+    <div class="brand">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAAmElEQVR42u3WwQ2AIBAE0HZKyP//OatCWyWwTxLd1xkM4cPjZQGgrOBjBM8DcGPpUFyoj3MJnK1nK9I5USqlUipVKoVSqVSqVSqVSKnR3gs4H2DYxwm1cwEZ5hQZMAKvgQgQ6eEHKtN4AAGaD7CVaEoNACj0Hn+YOQGsCqHsEEmfO1QCUHsEkmW0/gCgFVvN9GBY6S3AAAAAElFTkSuQmCC" alt="logo">
+      <h1>ANUGA SENITHU BOT PLUGINS</h1>
+    </div>
+    <nav>
+      <a href="index.html">Marketplace</a>
+      <a href="admin.html" class="btn">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>Free & ready-to-use WhatsApp bot plugins</h2>
+      <p>Browse plugins uploaded by admin. Click a plugin to view code or download.</p>
+    </section>
+
+    <section>
+      <div id="pluginsList" class="plugins-grid">
+        <!-- Plugin cards injected here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal to view plugin details -->
+  <div id="pluginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="modalClose">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <p><strong>Language:</strong> <span id="modalLang"></span></p>
+      <pre id="modalCode" class="code-block"></pre>
+      <div class="modal-actions">
+        <button id="downloadBtn" class="btn">Download</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderPluginsList();
+
+      // Modal behavior
+      const modal = document.getElementById("pluginModal");
+      const close = document.getElementById("modalClose");
+      close.onclick = () => modal.style.display = "none";
+      window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+    });
+  </script>
+</body>
+</html>
