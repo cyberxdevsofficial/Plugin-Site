@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - ANUGA SENITHU</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="matrixBackground"></canvas>
+  <header class="site-header">
+    <h1>Admin Dashboard</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="menuNav">
+      <a href="index.html">Home</a>
+      <a href="marketplace.html">Marketplace</a>
+      <a href="plugins.html">Plugins</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Statistics -->
+    <section>
+      <h2>Statistics</h2>
+      <p>Total Views: <span id="viewCount">0</span></p>
+      <p>Total Comments: <span id="commentCount">0</span></p>
+      <p>Total Admins: <span id="adminCount">0</span></p>
+    </section>
+
+    <!-- Admin Adding System -->
+    <section>
+      <h2>Add New Admin</h2>
+      <form id="addAdminForm">
+        <input type="text" id="newAdminUser" placeholder="New Admin Username" required>
+        <input type="password" id="newAdminPass" placeholder="New Admin Password" required>
+        <button type="submit" class="btn">Add Admin</button>
+      </form>
+    </section>
+
+    <!-- Comment Replying -->
+    <section>
+      <h2>Manage Comments</h2>
+      <div id="adminComments"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+      renderDashboard();
+      document.getElementById("addAdminForm").addEventListener("submit", e=>{
+        e.preventDefault();
+        addAdmin(
+          document.getElementById("newAdminUser").value,
+          document.getElementById("newAdminPass").value
+        );
+        e.target.reset();
+        renderDashboard();
+      });
+    });
+  </script>
+</body>
+</html>
