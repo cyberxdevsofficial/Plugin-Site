@@ -2,51 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Marketplace</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace - ANUGA SENITHU WHATSAPP BOT PLUGINS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/marketplace.js"></script>
 </head>
 <body>
-  <canvas id="matrixBackground"></canvas>
-
-  <header class="site-header">
-    <h1>Marketplace</h1>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="menuNav">
-      <a href="index.html">Home</a>
-      <a href="marketplace.html">Marketplace</a>
-      <a href="plugins.html">Plugins</a>
-      <a href="admin.html">Admin</a>
+  <header>
+    <div class="logo">⚡ ANUWH MD MINI ⚡</div>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="plugins.html">Plugins</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <div class="menu-toggle">☰</div>
     </nav>
   </header>
 
-  <main class="container">
-    <h2>Developer Products & Tools</h2>
+  <section class="form-section">
+    <h2>🛒 Add Marketplace Item</h2>
     <form id="marketForm">
-      <input type="text" id="mTitle" placeholder="Item Title" required>
-      <textarea id="mDesc" placeholder="Description" required></textarea>
-      <input type="password" id="mPass" placeholder="Password required" required>
-      <button type="submit" class="btn">Add Item</button>
+      <input type="text" id="itemName" placeholder="Item Name" required>
+      <textarea id="itemDesc" placeholder="Item Description" required></textarea>
+      <input type="number" id="itemPrice" placeholder="Price (Coins)" required>
+      <button type="submit">Add Item</button>
     </form>
-    <div id="marketList" class="plugins-grid"></div>
-  </main>
+  </section>
 
-  <script src="script.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", ()=>{
-      renderMarketplace();
-      const form = document.getElementById("marketForm");
-      form.addEventListener("submit", e=>{
-        e.preventDefault();
-        const pass=document.getElementById("mPass").value;
-        if(pass!=="Anuga123"){alert("Wrong password");return;}
-        addMarketItem({
-          title:document.getElementById("mTitle").value,
-          desc:document.getElementById("mDesc").value
-        });
-        form.reset();
-        renderMarketplace();
-      });
-    });
-  </script>
+  <section>
+    <h2>💎 Marketplace Items</h2>
+    <div id="marketList"></div>
+  </section>
+
+  <footer>
+    <p>© 2025 ANUGA SENITHU WHATSAPP BOT PLUGINS</p>
+  </footer>
 </body>
 </html>
