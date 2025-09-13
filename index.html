@@ -1,60 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ANUGA SENITHU WHATSAPP BOT PLUGINS</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ANUGA SENITHU - Home</title>
   <link rel="stylesheet" href="css/style.css" />
-  <script defer src="js/main.js"></script>
 </head>
 <body>
-  <!-- ===============================
-       WEBSITE PAGES OVERVIEW
-       ===============================
-       index.html  -> Homepage (reviews, site intro)
-       login.html  -> User login
-       register.html -> User registration
-       plugins.html -> Upload & browse plugins
-       marketplace.html -> Marketplace to buy products
-       admin.html  -> Admin login
-       admin-dashboard.html -> Admin dashboard (manage users, plugins, coins)
-  -->
+  <div class="content-overlay">
+    <header class="site-header">
+      <div class="brand">⚡ ANUGA SENITHU ⚡</div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav id="menuNav" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="plugins.html">Plugins</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </header>
 
-  <!-- Navigation Menu -->
-  <header>
-    <div class="logo">⚡ ANUWH MD MINI ⚡</div>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="marketplace.html">Marketplace</a></li>
-        <li><a href="plugins.html">Plugins</a></li>
-        <li><a href="admin.html">Admin</a></li>
-      </ul>
-      <div class="menu-toggle">☰</div>
-    </nav>
-  </header>
+    <main class="container">
+      <section class="hero">
+        <h1>Welcome to ANUGA SENITHU WhatsApp Bot Plugins</h1>
+        <p>Free plugins, marketplace items and an admin-managed ecosystem for WhatsApp bots.</p>
+      </section>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>🚀 Welcome to ANUGA SENITHU WHATSAPP BOT PLUGINS</h1>
-    <p>The #1 place to get free WhatsApp Bot Plugins, Marketplace items & more.</p>
-    <p>Register now and start earning coins 💰</p>
-  </section>
+      <section class="comments-section">
+        <h2>Community Reviews</h2>
+        <form id="commentForm">
+          <input id="cName" type="text" placeholder="Your name" required />
+          <textarea id="cText" placeholder="Write your review..." required></textarea>
+          <button type="submit" class="btn">Post Comment</button>
+        </form>
 
-  <!-- Comments / Reviews -->
-  <section class="comments">
-    <h2>💬 Community Reviews</h2>
-    <form id="commentForm">
-      <input type="text" id="commentName" placeholder="Your Name" required />
-      <textarea id="commentText" placeholder="Write your review..." required></textarea>
-      <button type="submit">Post Comment</button>
-    </form>
-    <div id="commentsList"></div>
-  </section>
+        <div id="comments" class="items-grid"></div>
+      </section>
+    </main>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 ANUGA SENITHU WHATSAPP BOT PLUGINS | Powered by Node.js & Firebase</p>
-  </footer>
+  <script src="js/matrix.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
