@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plugins - ANUGA SENITHU WHATSAPP BOT PLUGINS</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script defer src="js/plugins.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plugins - ANUGA SENITHU</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">⚡ ANUWH MD MINI ⚡</div>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="marketplace.html">Marketplace</a></li>
-        <li><a href="plugins.html">Plugins</a></li>
-        <li><a href="admin.html">Admin</a></li>
-      </ul>
-      <div class="menu-toggle">☰</div>
-    </nav>
-  </header>
+  <div class="content-overlay">
+    <header class="site-header">
+      <div class="brand">Plugins</div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav id="menuNav" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="plugins.html">Plugins</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </header>
 
-  <section class="form-section">
-    <h2>🛠 Add Plugin</h2>
-    <form id="pluginForm">
-      <input type="text" id="pluginName" placeholder="Plugin Name" required>
-      <textarea id="pluginDesc" placeholder="Plugin Description" required></textarea>
-      <input type="url" id="pluginLink" placeholder="Download Link" required>
-      <button type="submit">Add Plugin</button>
-    </form>
-  </section>
+    <main class="container">
+      <section class="form-card">
+        <h2>Add Plugin (admin password required)</h2>
+        <form id="pluginForm">
+          <input id="pTitle" type="text" placeholder="Plugin title" required />
+          <textarea id="pDesc" placeholder="Short description" required></textarea>
+          <textarea id="pCode" placeholder="Plugin code or usage notes" rows="6"></textarea>
+          <input id="pPass" type="password" placeholder="Admin password" required />
+          <button class="btn" type="submit">Add Plugin</button>
+        </form>
+      </section>
 
-  <section>
-    <h2>📦 Available Plugins</h2>
-    <div id="pluginList"></div>
-  </section>
+      <section>
+        <h2>Available Plugins</h2>
+        <div id="pluginList" class="items-grid"></div>
+      </section>
+    </main>
+  </div>
 
-  <footer>
-    <p>© 2025 ANUGA SENITHU WHATSAPP BOT PLUGINS</p>
-  </footer>
+  <script src="js/matrix.js"></script>
+  <script src="js/plugins.js"></script>
 </body>
 </html>
