@@ -1,63 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Admin Dashboard - ANUGA SENITHU</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <canvas id="matrixBackground"></canvas>
-  <header class="site-header">
-    <h1>Admin Dashboard</h1>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="menuNav">
-      <a href="index.html">Home</a>
-      <a href="marketplace.html">Marketplace</a>
-      <a href="plugins.html">Plugins</a>
-      <a href="admin.html">Admin</a>
-    </nav>
-  </header>
+  <div class="content-overlay">
+    <header class="site-header">
+      <div class="brand">Admin Dashboard</div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav id="menuNav" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="plugins.html">Plugins</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </header>
 
-  <main class="container">
-    <!-- Statistics -->
-    <section>
-      <h2>Statistics</h2>
-      <p>Total Views: <span id="viewCount">0</span></p>
-      <p>Total Comments: <span id="commentCount">0</span></p>
-      <p>Total Admins: <span id="adminCount">0</span></p>
-    </section>
+    <main class="container">
+      <section id="analysis" class="form-card">
+        <h3>Analysis</h3>
+        <p>Total Views: <span id="viewsCount">0</span></p>
+        <p>Total Users: <span id="usersCount">0</span></p>
+        <p>Total Comments: <span id="commentCount">0</span></p>
+      </section>
 
-    <!-- Admin Adding System -->
-    <section>
-      <h2>Add New Admin</h2>
-      <form id="addAdminForm">
-        <input type="text" id="newAdminUser" placeholder="New Admin Username" required>
-        <input type="password" id="newAdminPass" placeholder="New Admin Password" required>
-        <button type="submit" class="btn">Add Admin</button>
-      </form>
-    </section>
+      <section id="coins" class="form-card">
+        <h3>Coins</h3>
+        <p>Admin Coins: <span id="adminCoins">10000000</span></p>
+      </section>
 
-    <!-- Comment Replying -->
-    <section>
-      <h2>Manage Comments</h2>
-      <div id="adminComments"></div>
-    </section>
-  </main>
+      <section id="plugins" class="form-card">
+        <h3>Plugins (admin)</h3>
+        <div id="adminPluginList" class="items-grid"></div>
+      </section>
 
-  <script src="script.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", ()=>{
-      renderDashboard();
-      document.getElementById("addAdminForm").addEventListener("submit", e=>{
-        e.preventDefault();
-        addAdmin(
-          document.getElementById("newAdminUser").value,
-          document.getElementById("newAdminPass").value
-        );
-        e.target.reset();
-        renderDashboard();
-      });
-    });
-  </script>
+      <section id="reviews" class="form-card">
+        <h3>Comments & Replies</h3>
+        <div id="adminComments"></div>
+      </section>
+
+      <section id="admins" class="form-card">
+        <h3>Admins</h3>
+        <form id="addAdminForm">
+          <input id="newAdminUser" type="text" placeholder="New admin username" required />
+          <input id="newAdminPass" type="password" placeholder="New admin password" required />
+          <button class="btn" type="submit">Add Admin</button>
+        </form>
+        <div id="adminsList"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/matrix.js"></script>
+  <script src="js/admin-dashboard.js"></script>
 </body>
 </html>
