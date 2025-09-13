@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Admin Login - ANUGA SENITHU</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <canvas id="matrixBackground"></canvas>
-  <header class="site-header">
-    <h1>Admin Login</h1>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="menuNav">
-      <a href="index.html">Home</a>
-      <a href="marketplace.html">Marketplace</a>
-      <a href="plugins.html">Plugins</a>
-      <a href="admin.html">Admin</a>
-    </nav>
-  </header>
+  <div class="content-overlay">
+    <header class="site-header">
+      <div class="brand">Admin Login</div>
+    </header>
 
-  <main class="container">
-    <div class="form-container">
-      <h2>Admin Login</h2>
-      <form id="adminForm">
-        <input type="text" id="adminUsername" placeholder="Admin Username" required>
-        <input type="password" id="adminPassword" placeholder="Admin Password" required>
-        <button type="submit" class="btn">Login</button>
-      </form>
-    </div>
-  </main>
+    <main class="container">
+      <section class="form-card">
+        <form id="adminLoginForm">
+          <input id="adminUser" type="text" placeholder="Username" required />
+          <input id="adminPass" type="password" placeholder="Password" required />
+          <button class="btn" type="submit">Login</button>
+        </form>
+      </section>
+    </main>
+  </div>
 
-  <script src="script.js"></script>
-  <script>
-    document.getElementById("adminForm").addEventListener("submit", loginAdmin);
-  </script>
+  <script src="js/matrix.js"></script>
+  <script src="js/admin.js"></script>
 </body>
 </html>
