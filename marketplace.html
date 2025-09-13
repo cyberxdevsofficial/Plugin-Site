@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketplace - ANUGA SENITHU WHATSAPP BOT PLUGINS</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script defer src="js/marketplace.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Marketplace - ANUGA SENITHU</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">⚡ ANUWH MD MINI ⚡</div>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="marketplace.html">Marketplace</a></li>
-        <li><a href="plugins.html">Plugins</a></li>
-        <li><a href="admin.html">Admin</a></li>
-      </ul>
-      <div class="menu-toggle">☰</div>
-    </nav>
-  </header>
+  <div class="content-overlay">
+    <header class="site-header">
+      <div class="brand">Marketplace</div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <nav id="menuNav" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="plugins.html">Plugins</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </header>
 
-  <section class="form-section">
-    <h2>🛒 Add Marketplace Item</h2>
-    <form id="marketForm">
-      <input type="text" id="itemName" placeholder="Item Name" required>
-      <textarea id="itemDesc" placeholder="Item Description" required></textarea>
-      <input type="number" id="itemPrice" placeholder="Price (Coins)" required>
-      <button type="submit">Add Item</button>
-    </form>
-  </section>
+    <main class="container">
+      <section class="form-card">
+        <h2>Add Marketplace Item (admin password)</h2>
+        <form id="marketForm">
+          <input id="mTitle" type="text" placeholder="Item title" required />
+          <textarea id="mDesc" placeholder="Item description" required></textarea>
+          <input id="mPrice" type="number" placeholder="Price in coins" required />
+          <input id="mPass" type="password" placeholder="Admin password" required />
+          <button class="btn" type="submit">Add Item</button>
+        </form>
+      </section>
 
-  <section>
-    <h2>💎 Marketplace Items</h2>
-    <div id="marketList"></div>
-  </section>
+      <section>
+        <h2>Marketplace Items</h2>
+        <div id="marketList" class="items-grid"></div>
+      </section>
+    </main>
+  </div>
 
-  <footer>
-    <p>© 2025 ANUGA SENITHU WHATSAPP BOT PLUGINS</p>
-  </footer>
+  <script src="js/matrix.js"></script>
+  <script src="js/marketplace.js"></script>
 </body>
 </html>
